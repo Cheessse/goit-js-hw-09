@@ -8,8 +8,12 @@ myForm.addEventListener('submit', onFormSubmit);
 function onFormSubmit(e) {
   e.preventDefault();
 
-  const email = myForm.elements.email.value;
-  const message = myForm.elements.message.value;
+  const email = myForm.elements.email.value.trim();
+  const message = myForm.elements.message.value.trim();
+
+  if (!email || !message) {
+    alert('Будь ласка, заповніть всі поля.');
+  }
 
   const data = {
     email,
@@ -23,8 +27,8 @@ function onFormSubmit(e) {
 }
 
 function onFormInput() {
-  const email = myForm.elements.email.value;
-  const message = myForm.elements.message.value;
+  const email = myForm.elements.email.value.trim();
+  const message = myForm.elements.message.value.trim();
 
   const data = {
     email,
