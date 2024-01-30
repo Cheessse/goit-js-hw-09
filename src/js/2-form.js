@@ -2,7 +2,6 @@ const STORAGE_KEY = 'feedback-form-state';
 
 const myForm = document.querySelector('.feedback-form');
 
-myForm.addEventListener('input', onFormInput);
 myForm.addEventListener('submit', onFormSubmit);
 
 function onFormSubmit(e) {
@@ -11,20 +10,22 @@ function onFormSubmit(e) {
   const email = myForm.elements.email.value.trim();
   const message = myForm.elements.message.value.trim();
 
-  if (!email === '' || !message === '') {
-    console.log(data);
-  } else {
-    alert('Будь ласка, заповніть всі поля.');
-  }
-
   const data = {
     email,
     message,
   };
 
+  if (email === '' || message === '') {
+    alert('Будь ласка, заповніть всі поля.');
+  } else {
+    console.log(data);
+  }
+
   localStorage.removeItem(STORAGE_KEY);
   myForm.reset();
 }
+
+myForm.addEventListener('input', onFormInput);
 
 function onFormInput() {
   const email = myForm.elements.email.value.trim();
@@ -49,7 +50,7 @@ function loadFromLS(key) {
   try {
     return JSON.parse(zip);
   } catch {
-    return zip;
+    console.log('Error');
   }
 }
 
