@@ -11,7 +11,9 @@ function onFormSubmit(e) {
   const email = myForm.elements.email.value.trim();
   const message = myForm.elements.message.value.trim();
 
-  if (!email || !message) {
+  if (!email === '' || !message === '') {
+    console.log(data);
+  } else {
     alert('Будь ласка, заповніть всі поля.');
   }
 
@@ -19,8 +21,6 @@ function onFormSubmit(e) {
     email,
     message,
   };
-
-  console.log(data);
 
   localStorage.removeItem(STORAGE_KEY);
   myForm.reset();
